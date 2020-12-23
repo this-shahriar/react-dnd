@@ -10,16 +10,12 @@ export const postReducer = (state = initial, action) => {
       };
     case "TORAW":
       state?.raw?.splice(
-        state?.hoverIndex,
+        state?.hoverIndex + 1,
         0,
         ...state?.processed?.filter((item) => item?.id === action?.value)
       );
       return {
         ...state,
-        // raw: [
-        //   ...state?.raw,
-        //   ...state?.processed?.filter((item) => item?.id === action?.value),
-        // ],
         raw: [...state?.raw],
         processed: state?.processed?.filter(
           (item) => item?.id !== action?.value
